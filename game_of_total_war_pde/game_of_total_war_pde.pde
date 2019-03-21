@@ -33,7 +33,7 @@ void setup() {
       if (BK1 != BK2) {
         fill(255,255,255);
         FDJ = new FDistanceJoint(BK1, BK2);
-        FDJ.setLength(100);
+        FDJ.setLength(15);
         FDJ.setFill(255,255,255,255);
         FDJ.setNoStroke();
         FDJ.setStroke(0);
