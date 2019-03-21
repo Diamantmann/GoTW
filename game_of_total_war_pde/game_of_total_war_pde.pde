@@ -83,15 +83,15 @@ void draw() {
   }
 }
 
-void contactEnded (FContact c) {
-  if (!c.getBody1().isStatic()) {
-    BerberK i = (BerberK)c.getBody1();
-    i.setFill(0, 0, 255);
-    println("berber");
-  }
+//void contactEnded (FContact c) {
+//  if (!c.getBody1().isStatic()) {
+//    BerberK i = (BerberK)c.getBody1();
+//    i.setFill(random(255), random(255), random(255));
+//    println("berber");
+//  }
 
-  if (!c.getBody2().isStatic()) {
-    BerberK f = (BerberK)c.getBody2();
-    f.setFill(0, 255, 255);
-  }
-}
+//  if (!c.getBody2().isStatic()) {
+//    BerberK f = (BerberK)c.getBody2();
+//    f.setFill(random(255), random(255), random(255));
+//  }
+//}
