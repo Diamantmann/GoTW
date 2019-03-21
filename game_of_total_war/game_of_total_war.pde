@@ -32,12 +32,12 @@ void draw() {
       boxes.remove(i);
     }
   }
-
-  /*if (mousePressed) {
-   for (Box b: boxes) {
-   b.attract(mouseX,mouseY);
-   }
-   }*/
+/*
+  if (mousePressed) {
+    for (Box b : boxes) {
+      b.attract(mouseX, mouseY);
+    }
+  }*/
 
   keyPressed();
 }
@@ -46,22 +46,22 @@ void keyPressed() {
   if (keyPressed == true) {
     if (key == 'w') {
       for (Box b : boxes) {
-        b.attract(0, 0);
+        b.attract(b.pos().x, b.pos().y-1);
       }
     }
     if (key == 'a') {
       for (Box b : boxes) {
-        b.attract(0, 250);
+        b.attract(b.pos().x-1, b.pos().y);
       }
     }
     if (key == 's') {
       for (Box b : boxes) {
-        b.attract(250, 500);
+        b.attract(b.pos().x, b.pos().y+1);
       }
     }
     if (key == 'd') {
       for (Box b : boxes) {
-        b.attract(500, 250);
+        b.attract(b.pos().x+1, b.pos().y);
       }
     }
   }
