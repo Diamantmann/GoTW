@@ -1,1 +1,3 @@
-interface skaerm
+interface Skaerm {
+  void display();
+}

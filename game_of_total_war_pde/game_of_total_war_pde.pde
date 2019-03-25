@@ -2,17 +2,20 @@ import fisica.*;
 
 PImage BKI;
 
-
+SelectionBehandling SB = new SelectionBehandling();
 FWorld verden;
 FDistanceJoint FDJ;
 
 int selectionB, selectionR, pOIx, pOIy;
 
+int antalBerberKavaleri, antalBerberBueskytter, antalBerberInfanteri;
+int antalRomerKavaleri, antalRomerBueskytter, antalRomerInfanteri;
+
 ArrayList<BerberK> berberKavaleri;
 ArrayList<RomerK> romerKavaleri;
 
 void setup() {
-
+  frameRate(60);
   background(255, 255, 255);
 
   BKI = loadImage("BKI.png");
@@ -82,7 +85,8 @@ void setup() {
 void draw() {
   background(255);
 
-  switch(selectionB) {
+  SB.SelectionBerber();
+  /*switch(selectionB) {
   case 1:
     fill(0);
     text("Nuværende enhed: Infanteri", 10, 25);
@@ -98,11 +102,11 @@ void draw() {
     text("Nuværende enhed: Bueskytte", 10, 25);
     fill(255);
     break;
-  }
+  }*/
 
   for (int i = berberKavaleri.size()-1; i >= 0; i--) {
     BerberK BK = berberKavaleri.get(i);
-    BK.marchBerberkavalri();
+    if(selectionB == 2){BK.marchBerberkavalri();}
     BK.setRotation(0);
   }
 

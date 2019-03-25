@@ -14,8 +14,25 @@ class BerberK extends FCircle{
   }
   
   void marchBerberkavalri(){
-    //setVelocity((positionX-getX())*(hastighed/50),(positionY-getY())*(hastighed/50));
-    //setVelocity(random(-100,100),random(-100,100));
+    if(key == CODED){
+      switch(keyCode){
+        case UP:
+        setVelocity(0,-100);
+        break;
+        
+        case DOWN:
+        setVelocity(0,100);
+        break;
+        
+        case LEFT:
+        setVelocity(-100,0);
+        break;
+        
+        case RIGHT:
+        setVelocity(100,0);
+        break;
+      }
+    }
   }
   
 }

@@ -14,4 +14,27 @@ class RomerK extends FCircle{
     setSize(storrelse);
     setPosition(x,y);
   }
+  
+  void marchRomerKavaleri(){
+    if(key == CODED){
+      switch(keyCode){
+        case UP:
+        setVelocity(0,-100);
+        break;
+        
+        case DOWN:
+        setVelocity(0,100);
+        break;
+        
+        case LEFT:
+        setVelocity(-100,0);
+        break;
+        
+        case RIGHT:
+        setVelocity(100,0);
+        break;
+      }
+    }
+  }
+  
 }
