@@ -23,6 +23,7 @@ class SetBerberHaerSkaerm implements Skaerm {
       clear();
       background(255);
       
+      text("Vælg en berberhær!", width/2 , 20);
 
       for (int i = berberKavaleri.size()-1; i>=0; i--) {
         BerberK BK = berberKavaleri.get(i);

@@ -19,7 +19,26 @@ class SetRomerHaerSkaerm implements Skaerm {
   }
   
   void setupSkaerm(){
-  
+    if (setupSkaerm) {
+      clear();
+      background(255);
+      
+      text("Vælg en berberhær!", width/2 , 20);
+
+      for (int i = berberKavaleri.size()-1; i>=0; i--) {
+        BerberK BK = berberKavaleri.get(i);
+        verden.removeBody(BK);
+        berberKavaleri.remove(i);
+      }
+      
+      for (int i = romerKavaleri.size()-1; i>=0;i--){
+        RomerK RK = romerKavaleri.get(i);
+        verden.removeBody(RK);
+        romerKavaleri.remove(i);
+      }
+
+      setupSkaerm = false;
+    }
   }
   
   void display(){

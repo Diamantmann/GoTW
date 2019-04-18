@@ -26,13 +26,13 @@ class Spilapplikation {
   }
   
   void setRomerHaerSkaerm(){
-    berberSkaerm.resetSkaerm();
-    skaerm = berberSkaerm;
+    romerSkaerm.resetSkaerm();
+    skaerm = romerSkaerm;
   }
   
   void setBerberHaerSkaerm(){
-    romerSkaerm.resetSkaerm();
-    skaerm = romerSkaerm;
+    berberSkaerm.resetSkaerm();
+    skaerm = berberSkaerm;
   }
   
   void museKlik(int x,int y){
