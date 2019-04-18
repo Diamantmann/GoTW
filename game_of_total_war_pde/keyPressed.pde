@@ -2,55 +2,25 @@ void keyPressed() {
   //Berberselektion
   if (key == '1') {
     selectionB = 1;
-    println("selection: " + selectionB);
+    println("Bselection: " + selectionB);
   } else if (key == '2') {
     selectionB = 2;
-    println("selection: " + selectionB);
+    println("Bselection: " + selectionB);
   } else if (key == '3') {
     selectionB = 3;
-    println("selection: " + selectionB);
+    println("Bselection: " + selectionB);
   }
+
   //Berber
-  if (key == CODED) {
-    if (keyCode == UP) {
-      switch(selectionB) {
-      case 1:
-        break;
-      case 2:
-        break;
-      case 3:
-        break;
-      }
-    }
-    if (keyCode == LEFT) {
-      switch(selectionB) {
-      case 1:
-        break;
-      case 2:
-        break;
-      case 3:
-        break;
-      }
-    }
-    if (keyCode == RIGHT) {
-      switch(selectionB) {
-      case 1:
-        break;
-      case 2:
-        break;
-      case 3:
-        break;
-      }
-    }
-    if (keyCode == DOWN) {
-      switch(selectionB) {
-      case 1:
-        break;
-      case 2:
-        break;
-      case 3:
-        break;
-      }
-    }
+  switch(key) {
+  case 'q':
+    selectionR = 1;
+    break;
+  case 'e':
+    selectionR = 2;
+    break;
+  case 'r':
+    selectionR = 3;
+    break;
   }
 }
