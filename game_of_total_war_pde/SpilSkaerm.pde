@@ -1,21 +1,20 @@
 class SpilSkaerm implements Skaerm {
 
-  SkiftSkaermKnap tilStart = new SkiftSkaermKnap(width-60, height-40, 30, 50, "Stop");
+  SkiftSkaermKnap tilStart = new SkiftSkaermKnap(15, 15, 30, 50, "Stop");
   boolean knapTrykket = false;
   boolean setupSkaerm = true;
 
   void display() {
     background(255);
     tilStart.visKnap();
+    SB.SelectionBerber();
   }
 
   void setupSkaerm() {
     if (setupSkaerm) {
       
-      OH = new OpretHaer(2,2,2,2,2,2);
-      
       for (int i = 0; i < OH.antalBerberKavaleri(); i++) {
-        berberKavaleri.add(new BerberK(50, 10, 10, round(random((width/2-10), (width/2+10))), 10));
+        berberKavaleri.add(new BerberK(50, 10, 10, round(random((width/2-10), (width/2+10))), 10, 100));
         BerberK BK = berberKavaleri.get(i);
         //BK.setPosition(random((width/2-10),(width/2+10)), random((height/2-10),random(width/2+10)));
         BK.setRestitution(0.25);

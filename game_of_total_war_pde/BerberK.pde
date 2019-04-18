@@ -1,13 +1,19 @@
 class BerberK extends FCircle {
-  int hastighed, styrke, storrelse;
+  int hastighed, styrke, storrelse, hp;
   int positionX=width/2, positionY=height/2;
 
-  BerberK(int hastighed, int Styrke, int Storrelse, int x, int y) {
-    super(Storrelse);
-    storrelse = Storrelse;
+  BerberK(int hastighed, 
+          int styrke, 
+          int storrelse, 
+          int x, 
+          int y,
+          int hp){
+            
+    super(storrelse);
+    this.storrelse = storrelse;
     this.hastighed = hastighed;
-    styrke = Styrke;
-    //storrelse = Storrelse;
+    this.styrke = styrke;
+    this.hp = hp;
 
     setSize(storrelse);
     setPosition(x, y);

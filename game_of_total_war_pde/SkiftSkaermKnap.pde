@@ -13,7 +13,7 @@ class SkiftSkaermKnap {
     fill(125);
     rect(x, y, b, h);
     fill(0);
-    text(str, x+15, y+20);
+    text(str, h-y, b-x);
     fill(0);
   }
 

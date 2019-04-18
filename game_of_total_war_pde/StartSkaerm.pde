@@ -1,17 +1,22 @@
 class StartSkaerm implements Skaerm {
 
-  SkiftSkaermKnap tilSpil = new SkiftSkaermKnap(width-60, height-40, 30, 50, "Spil");
-  boolean knapTrykket = false;
+  SkiftSkaermKnap tilSpil = new SkiftSkaermKnap(300, 150, 30, 200, "Spil");
+  boolean skiftSkaermKnapTrykket = false;
+  
+  SkiftSkaermKnap tilRomerHaer = new SkiftSkaermKnap(300,180,30,100,"Romerhær");
+  
   boolean setupSkaerm = true;
+  
 
   void resetSkaerm() {  
-    knapTrykket = false;
+    skiftSkaermKnapTrykket = false;
     setupSkaerm = true;
   }
 
   void display() {
     background(255);
     tilSpil.visKnap();
+    tilRomerHaer.visKnap();
   }
 
   void setupSkaerm() {
@@ -37,12 +42,12 @@ class StartSkaerm implements Skaerm {
   }
 
   void opdater(Spilapplikation SA) {
-    if (knapTrykket) {
+    if (skiftSkaermKnapTrykket) {
       SA.setSkaermSpil();
     }
   }
 
   void museKlik(int x, int y) {
-    knapTrykket = tilSpil.musKlikkerPaaKnap(x, y);
+    skiftSkaermKnapTrykket = tilSpil.musKlikkerPaaKnap(x, y);
   }
 }

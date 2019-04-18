@@ -6,7 +6,7 @@ Spilapplikation SA = new Spilapplikation();
 SelectionBehandling SB = new SelectionBehandling();
 FWorld verden;
 FDistanceJoint FDJ;
-OpretHaer OH;
+OpretHaer OH = new OpretHaer(5,5,5,5,5,5);
 
 int selectionB, selectionR, pOIx, pOIy;
 
@@ -17,6 +17,7 @@ ArrayList<BerberK> berberKavaleri;
 ArrayList<RomerK> romerKavaleri;
 
 void setup() {
+  textAlign(CENTER);
   SA.setSkaermStart();
   background(255, 255, 255);
   BKI = loadImage("BKI.png");
@@ -29,15 +30,13 @@ void setup() {
 
   verden.setEdges();
   verden.setGravity(0, 0);
-  size(500, 500);
-  //fullScreen();
+  //size(500, 500);
+  fullScreen();
 }
 
 void draw() {
   SA.display();
   SA.opdater();
-
-  SB.SelectionBerber();
 
   for (int i = berberKavaleri.size()-1; i >= 0; i--) {
     BerberK BK = berberKavaleri.get(i);
