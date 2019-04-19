@@ -79,7 +79,6 @@ void draw() {
       RK.marchRomerKavaleri();
     }
   }
-
   verden.draw();
   verden.step();
 }

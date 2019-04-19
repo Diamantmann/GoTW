@@ -21,7 +21,7 @@ class SelectionBehandling {
     textAlign(CENTER);
   }
   void selectionRomer(){
-    textAlign(CENTER);
+    textAlign(RIGHT);
     switch(selectionR){
     case 1:
       fill(0);
