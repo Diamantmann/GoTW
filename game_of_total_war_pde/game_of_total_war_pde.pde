@@ -84,13 +84,29 @@ void draw() {
 }
 
 void contactStarted (FContact c) {
-  if (!c.getBody1().isStatic()) {
-    BerberK i = (BerberK)c.getBody1();
-    i.setFill(random(255), random(255), random(255));
-  }
-
-  if (!c.getBody2().isStatic()) {
-    BerberK f = (BerberK)c.getBody2();
-    f.setFill(random(255), random(255), random(255));
+  for (int i = berberKavaleri.size()-1; i >= 0; i--) {
+    BerberK BK = berberKavaleri.get(i);
+    for (int j = romerKavaleri.size()-1; j >= 0; j--) {
+      RomerK RK = romerKavaleri.get(i);
+      if (c.getBody1() == BK && c.getBody2() == RK || c.getBody1() == RK && c.getBody2() == BK) 
+      {
+        float skadePaaRomer = (sqrt(pow(BK.getVelocityX(),2)+pow(BK.getVelocityY(),2))*BK.styrke)/10;
+        float skadePaaBerber = (sqrt(pow(RK.getVelocityX(),2)+pow(RK.getVelocityY(),2))*RK.styrke)/10;
+        
+        RK.hp = RK.hp - skadePaaRomer;
+        BK.hp = BK.hp - skadePaaBerber;
+      }
+    }
   }
 }
+
+//if (!c.getBody1().isStatic()) {
+//    println("hej");
+//    BerberK i = (BerberK)c.getBody1();
+//    i.removeFromWorld();
+//  }
+
+//  if (!c.getBody2().isStatic()) {
+//    println("hej");
+//    RomerK f = (RomerK)c.getBody2();
+//    f.removeFromWorld();

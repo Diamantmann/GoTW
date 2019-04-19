@@ -1,12 +1,12 @@
 class BerberK extends FCircle {
-  int hastighed, styrke, storrelse, hp;
+  float hastighed, styrke, storrelse, hp;
   int positionX=width/2, positionY=height/2;
 
   BerberK(
     int hastighed, 
     int styrke, 
     int storrelse, 
-    int hp, 
+    float hp, 
     int x, 
     int y
     ) {

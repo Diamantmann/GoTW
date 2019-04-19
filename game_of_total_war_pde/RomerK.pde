@@ -1,13 +1,13 @@
 class RomerK extends FCircle {
 
-  int hastighed, styrke, storrelse, hp;
+  float hastighed, styrke, storrelse, hp;
   int positionX=width/2, positionY=height/2;
 
   RomerK(
     int hastighed, 
     int styrke, 
     int storrelse, 
-    int hp, 
+    float hp, 
     int x, 
     int y
     ) {
