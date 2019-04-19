@@ -9,13 +9,13 @@ class KnapTilHaer {
 
   void visKnap() {
     fill(255);
-    rect(x, y, 15,15);
+    rect(x, y, 15, 15);
     fill(0);
-    text(str, x+5, y+10);
+    text(str, x+7.5, y+7.5);
     fill(0);
   }
 
   boolean musKlikkerPaaKnap(int museKlikX, int museKlikY) {
-    return (museKlikX < x+50) && (museKlikX > x) && (museKlikY < y+50) && (museKlikY > y);
+    return (museKlikX < x+15) && (museKlikX > x) && (museKlikY < y+15) && (museKlikY > y);
   }
 }

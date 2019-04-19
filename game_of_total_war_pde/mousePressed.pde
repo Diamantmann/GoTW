@@ -1,3 +1,3 @@
 void mousePressed() {
-  SA.museKlik(mouseX,mouseY);
+  SA.museKlik(mouseX, mouseY);
 }

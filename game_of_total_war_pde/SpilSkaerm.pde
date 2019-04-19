@@ -12,16 +12,30 @@ class SpilSkaerm implements Skaerm {
 
   void setupSkaerm() {
     if (setupSkaerm) {
-      
+
       for (int i = 0; i < OH.antalBerberKavaleri(); i++) {
-        berberKavaleri.add(new BerberK(50, 10, 10, round(random((width/2-10), (width/2+10))), 10, 100));
+        berberKavaleri.add(new BerberK(
+          berberVaerdier[0], 
+          10, 
+          10, 
+          100, 
+          round(random((width/2-10), (width/2+10))), 
+          10
+          ));
+
         BerberK BK = berberKavaleri.get(i);
-        //BK.setPosition(random((width/2-10),(width/2+10)), random((height/2-10),random(width/2+10)));
         BK.setRestitution(0.25);
-        //BK.attachImage(BKI);
         verden.add(BK);
 
-        romerKavaleri.add(new RomerK(40, 20, 20, width/2, height-25, 100));
+        romerKavaleri.add(new RomerK(
+          romerVaerdier[0], 
+          20, 
+          20, 
+          100, 
+          width/2, 
+          height-25
+          ));
+
         RomerK RK = romerKavaleri.get(i);
         BK.setRestitution(0.25);
         verden.add(RK);

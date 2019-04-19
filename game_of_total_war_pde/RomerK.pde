@@ -3,13 +3,15 @@ class RomerK extends FCircle {
   int hastighed, styrke, storrelse, hp;
   int positionX=width/2, positionY=height/2;
 
-  RomerK(int hastighed, 
-         int styrke, 
-         int storrelse, 
-         int x, 
-         int y, 
-         int hp){
-           
+  RomerK(
+    int hastighed, 
+    int styrke, 
+    int storrelse, 
+    int hp, 
+    int x, 
+    int y
+    ) {
+
     super(10);
     this.storrelse = storrelse;
     this.hastighed = hastighed;
@@ -25,19 +27,19 @@ class RomerK extends FCircle {
     if (keyPressed == true) {
       switch(key) {
       case 'w':
-        setVelocity(0, -100);
+        setVelocity(0, -10 * hastighed);
         break;
 
       case 's':
-        setVelocity(0, 100);
+        setVelocity(0, 10 * hastighed);
         break;
 
       case 'a':
-        setVelocity(-100, 0);
+        setVelocity(-10 * hastighed, 0);
         break;
 
       case 'd':
-        setVelocity(100, 0);
+        setVelocity(10 * hastighed, 0);
         break;
       }
     }

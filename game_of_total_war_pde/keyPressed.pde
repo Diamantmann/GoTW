@@ -5,7 +5,8 @@ void keyPressed() {
     println("Bselection: " + selectionB);
   } else if (key == '2') {
     selectionB = 2;
-    println("Bselection: " + selectionB);} 
+    println("Bselection: " + selectionB);
+  } 
   //else if (key == '3') {
   //  selectionB = 3;
   //  println("Bselection: " + selectionB);
