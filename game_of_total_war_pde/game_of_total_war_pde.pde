@@ -84,22 +84,14 @@ void draw() {
   verden.step();
 }
 
-//void contactEnded (FContact c) {
-//  if (!c.getBody1().isStatic()) {
-//    BerberK i = (BerberK)c.getBody1();
-//    i.setFill(random(255), random(255), random(255));
-//  }
+void contactStarted (FContact c) {
+  if (!c.getBody1().isStatic()) {
+    BerberK i = (BerberK)c.getBody1();
+    i.setFill(random(255), random(255), random(255));
+  }
 
-//  if (!c.getBody2().isStatic()) {
-//    BerberK f = (BerberK)c.getBody2();
-//    f.setFill(random(255), random(255), random(255));
-//  }
-//}
-
-/*if (mousePressed) {
- for(int i = berberKavaleri.size()-1;i>=0;i--){
- BerberK BK = berberKavaleri.get(i);
- verden.removeBody(BK);
- berberKavaleri.remove(i);
- }
- }*/
+  if (!c.getBody2().isStatic()) {
+    BerberK f = (BerberK)c.getBody2();
+    f.setFill(random(255), random(255), random(255));
+  }
+}

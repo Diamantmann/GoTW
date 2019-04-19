@@ -5,7 +5,7 @@ class SetBerberHaerSkaerm implements Skaerm {
   // int nuvaerendeBerberVaerdi;
   // int[] berberVaerdier = new int[4];
 
-  SkiftSkaermKnap tilMenuen = new SkiftSkaermKnap(15, 15, 30, 50, "Tilbage");
+  SkiftSkaermKnap tilMenuen = new SkiftSkaermKnap(width/2-90, 220, 30, 180, "Gem og tilbage");
   boolean tilbageTilStartSkaerm = false;
 
   KnapTilHaer hastighedOp = new KnapTilHaer(width/2-15, 80, "+");
@@ -89,7 +89,7 @@ class SetBerberHaerSkaerm implements Skaerm {
     text(berberVaerdier[0], width/2 + 70, 90);
     text(berberVaerdier[1], width/2 + 70, 120);
     text(berberVaerdier[2], width/2 + 70, 150);
-    text(berberVaerdier[3], width/2 + 70, 180);
+    text(berberVaerdier[3]*10, width/2 + 70, 180);
     text(20 - nuvaerendeBerberVaerdi, width/2 + 70, 200);
     textAlign(CENTER);
 
@@ -104,9 +104,16 @@ class SetBerberHaerSkaerm implements Skaerm {
 
     HPOp.visKnap();
     HPNed.visKnap();
+    
+    tilMenuen.visKnap();
   }
 
   void opdater(Spilapplikation SA) {
+    
+    if (tilbageTilStartSkaerm){
+      SA.setSkaermStart();
+    }
+    
     if (hastighedOpTrykket) {
       if (nuvaerendeBerberVaerdi < 20) {
         berberVaerdier[0]++;
@@ -140,32 +147,32 @@ class SetBerberHaerSkaerm implements Skaerm {
     }
 
     if (storrelseOpTrykket) {
-      if (nuvaerendeRomerVaerdi < 20) {
-        romerVaerdier[2]++;
+      if (nuvaerendeBerberVaerdi < 20) {
+        berberVaerdier[2]++;
         storrelseOpTrykket = false;
       } else {
       }
     }
 
     if (storrelseNedTrykket) {
-      if (nuvaerendeRomerVaerdi > 0 && romerVaerdier[2] != 1) {
-        romerVaerdier[2]--;
+      if (nuvaerendeBerberVaerdi > 0 && berberVaerdier[2] != 1) {
+        berberVaerdier[2]--;
         storrelseNedTrykket = false;
       } else {
       }
     }
 
     if (HPOpTrykket) {
-      if (nuvaerendeRomerVaerdi < 20 ) {
-        romerVaerdier[3]++;
+      if (nuvaerendeBerberVaerdi < 20 ) {
+        berberVaerdier[3]++;
         HPOpTrykket = false;
       } else {
       }
     }
 
     if (HPNedTrykket) {
-      if (nuvaerendeRomerVaerdi > 0 && romerVaerdier[3] != 1) {
-        romerVaerdier[3]--;
+      if (nuvaerendeBerberVaerdi > 0 && berberVaerdier[3] != 1) {
+        berberVaerdier[3]--;
         HPNedTrykket = false;
       } else {
       }
@@ -184,5 +191,7 @@ class SetBerberHaerSkaerm implements Skaerm {
 
     HPOpTrykket = HPOp.musKlikkerPaaKnap(x, y);
     HPNedTrykket = HPNed.musKlikkerPaaKnap(x, y);
+    
+    tilbageTilStartSkaerm = tilMenuen.musKlikkerPaaKnap(x,y);
   }
 }

@@ -6,7 +6,7 @@ class SetRomerHaerSkaerm implements Skaerm {
   // int maksRomerVaerdi = 20;
 
 
-  SkiftSkaermKnap tilSpil = new SkiftSkaermKnap(15, 15, 30, 50, "Tilbage");
+  SkiftSkaermKnap tilMenuen = new SkiftSkaermKnap(width/2-90, 220, 30, 180, "Gem og tilbage");
   boolean tilbageTilStartSkaerm = false;
 
   KnapTilHaer hastighedOp = new KnapTilHaer(width/2-15, 80, "+");
@@ -88,7 +88,7 @@ class SetRomerHaerSkaerm implements Skaerm {
     text(romerVaerdier[0], width/2 + 70, 90);
     text(romerVaerdier[1], width/2 + 70, 120);
     text(romerVaerdier[2], width/2 + 70, 150);
-    text(romerVaerdier[3], width/2 + 70, 180);
+    text(romerVaerdier[3]*10, width/2 + 70, 180);
     text(20 - nuvaerendeRomerVaerdi, width/2 + 70, 200);
     textAlign(CENTER);
 
@@ -103,9 +103,16 @@ class SetRomerHaerSkaerm implements Skaerm {
 
     HPOp.visKnap();
     HPNed.visKnap();
+    
+    tilMenuen.visKnap();
   }
 
   void opdater(Spilapplikation SA) {
+    
+    if (tilbageTilStartSkaerm){
+      SA.setSkaermStart();
+    }
+    
     if(hastighedOpTrykket){
       if(nuvaerendeRomerVaerdi < 20){
         romerVaerdier[0]++;
@@ -175,5 +182,7 @@ class SetRomerHaerSkaerm implements Skaerm {
 
     HPOpTrykket = HPOp.musKlikkerPaaKnap(x,y);
     HPNedTrykket = HPNed.musKlikkerPaaKnap(x,y);
+    
+    tilbageTilStartSkaerm = tilMenuen.musKlikkerPaaKnap(x,y);
   }
 }

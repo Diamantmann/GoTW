@@ -1,21 +1,44 @@
 class SelectionBehandling {
   void SelectionBerber() {
+    textAlign(RIGHT);
     switch(selectionB) {
     case 1:
       fill(0);
-      text("Berber enhed: Infanteri", 100, 25);
+      text("Berber: Infanteri", width-10, 25);
       fill(255);
       break;
     case 2:
       fill(0);
-      text("Berber enhed: Kavaleri", 100, 25);
+      text("Berber: Kavaleri", width-10, 25);
       fill(255);
       break;
     case 3:
       fill(0);
-      text("Berber enhed: Bueskytte", 100, 25);
+      text("Berber: Bueskytte", width-10, 25);
       fill(255);
       break;
     }
+    textAlign(CENTER);
+  }
+  void selectionRomer(){
+    textAlign(CENTER);
+    switch(selectionR){
+    case 1:
+      fill(0);
+      text("Romer: Infanteri", width-10, height-25);
+      fill(255);
+      break;
+    case 2:
+      fill(0);
+      text("Romer: Kavaleri", width-10, height-25);
+      fill(255);
+      break;
+    case 3:
+      fill(0);
+      text("Romer: Bueskytte", width-10, height-25);
+      fill(255);
+      break;
+    }
+    textAlign(CENTER);
   }
 }

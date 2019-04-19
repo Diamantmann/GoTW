@@ -1,5 +1,4 @@
 class StartSkaerm implements Skaerm {
-
   SkiftSkaermKnap tilSpil = new SkiftSkaermKnap(width/2-100, 60, 30, 200, "Spil");
   boolean skiftSkaermKnapTrykket = false;
 

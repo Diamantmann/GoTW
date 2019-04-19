@@ -8,6 +8,24 @@ class SpilSkaerm implements Skaerm {
     background(255);
     tilStart.visKnap();
     SB.SelectionBerber();
+    SB.selectionRomer();
+    
+    for (int i = berberKavaleri.size()-1; i >= 0; i--) {
+      BerberK BK = berberKavaleri.get(i);
+      if(BK.hp <= 0){
+        verden.removeBody(BK);
+        berberKavaleri.remove(i);
+      }
+    }
+    
+    for (int i = romerKavaleri.size()-1; i >= 0; i--){
+      RomerK RK = romerKavaleri.get(i);
+      if(RK.hp <= 0){
+        verden.removeBody(RK);
+        romerKavaleri.remove(i);
+      }
+    }
+    
   }
 
   void setupSkaerm() {
@@ -16,28 +34,28 @@ class SpilSkaerm implements Skaerm {
       for (int i = 0; i < OH.antalBerberKavaleri(); i++) {
         berberKavaleri.add(new BerberK(
           berberVaerdier[0], 
-          10, 
-          10, 
-          100, 
+          berberVaerdier[1], 
+          berberVaerdier[2], 
+          berberVaerdier[3], 
           round(random((width/2-10), (width/2+10))), 
           10
           ));
 
         BerberK BK = berberKavaleri.get(i);
-        BK.setRestitution(0.25);
+        BK.setRestitution(1/BK.styrke);
         verden.add(BK);
 
         romerKavaleri.add(new RomerK(
           romerVaerdier[0], 
-          20, 
-          20, 
-          100, 
+          romerVaerdier[1], 
+          romerVaerdier[2], 
+          romerVaerdier[3], 
           width/2, 
           height-25
           ));
 
         RomerK RK = romerKavaleri.get(i);
-        BK.setRestitution(0.25);
+        BK.setRestitution(1/RK.styrke);
         verden.add(RK);
       }
 
