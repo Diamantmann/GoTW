@@ -15,7 +15,7 @@ class RomerK extends FCircle {
     ) {
 
     //RomerK arver fra klassen FCircle, og skal derfor have et input som FCircle.
-    super(10);
+    super(storrelse);
     this.storrelse = storrelse;
     this.hastighed = hastighed;
     this.styrke = styrke;

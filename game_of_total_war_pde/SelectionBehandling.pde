@@ -17,7 +17,7 @@ class SelectionBehandling {
       break;
     case 3:
       fill(0);
-      text("Berber: Bueskytte", width-10, 25);
+      text("Berber: Artillery", width-10, 25);
       fill(255);
       break;
     }
@@ -41,7 +41,7 @@ class SelectionBehandling {
       break;
     case 3:
       fill(0);
-      text("Romer: Bueskytte", width-10, height-25);
+      text("Romer: Artillery", width-10, height-25);
       fill(255);
       break;
     }
