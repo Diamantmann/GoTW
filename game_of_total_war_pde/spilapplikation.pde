@@ -1,42 +1,44 @@
+//Klassen spilapplikation.
 class Spilapplikation {
 
+  //Der skabes et interface skaerm, hvoraf de andre skærme kan arve fra.
   Skaerm skaerm;
   SpilSkaerm spilSkaerm = new SpilSkaerm();
   StartSkaerm startSkaerm = new StartSkaerm();
   SetBerberHaerSkaerm berberSkaerm = new SetBerberHaerSkaerm();
   SetRomerHaerSkaerm romerSkaerm = new SetRomerHaerSkaerm();
-  
-  void display(){
+
+  //Spilapplikationenes funktioner.
+  void display() {
     skaerm.setupSkaerm();
     skaerm.display();
   }
-  
-  void opdater(){
+
+  void opdater() {
     skaerm.opdater(SA);
   }
-  
-  void setSkaermStart(){
+
+  void setSkaermStart() {
     startSkaerm.resetSkaerm();
     skaerm = startSkaerm;
   }
-  
-  void setSkaermSpil(){
+
+  void setSkaermSpil() {
     spilSkaerm.resetSkaerm();
     skaerm = spilSkaerm;
   }
-  
-  void setRomerHaerSkaerm(){
+
+  void setRomerHaerSkaerm() {
     romerSkaerm.resetSkaerm();
     skaerm = romerSkaerm;
   }
-  
-  void setBerberHaerSkaerm(){
+
+  void setBerberHaerSkaerm() {
     berberSkaerm.resetSkaerm();
     skaerm = berberSkaerm;
   }
-  
-  void museKlik(int x,int y){
-    skaerm.museKlik(x,y);
+
+  void museKlik(int x, int y) {
+    skaerm.museKlik(x, y);
   }
-  
 }

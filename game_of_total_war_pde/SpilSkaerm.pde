@@ -1,36 +1,42 @@
+//Klassen SpilSkaerm implementere Skaerm.
 class SpilSkaerm implements Skaerm {
 
+  //Knappen "stop" skabes, og booleanværdier erklæres og initialiseres.
   SkiftSkaermKnap tilStart = new SkiftSkaermKnap(15, 15, 30, 50, "Stop");
   boolean knapTrykket = false;
   boolean setupSkaerm = true;
 
   void display() {
     background(255);
+
+    //Knappernevises, og der udskrives, hvilke enheder der er valgt.
     tilStart.visKnap();
     SB.SelectionBerber();
     SB.selectionRomer();
-    
+
+    //Sletter berberenheder/romerenheder hvis deres HP er på eller under 0.
     for (int i = berberKavaleri.size()-1; i >= 0; i--) {
       BerberK BK = berberKavaleri.get(i);
-      if(BK.hp <= 0){
+      if (BK.hp <= 0) {
         verden.removeBody(BK);
         berberKavaleri.remove(i);
       }
     }
-    
-    for (int i = romerKavaleri.size()-1; i >= 0; i--){
+
+    for (int i = romerKavaleri.size()-1; i >= 0; i--) {
       RomerK RK = romerKavaleri.get(i);
-      if(RK.hp <= 0){
+      if (RK.hp <= 0) {
         verden.removeBody(RK);
         romerKavaleri.remove(i);
       }
     }
-    
   }
 
+  //Denne funktion køres kun, hvis setupSkaerm er sand. Virker ligesom 'void setup()'.
   void setupSkaerm() {
     if (setupSkaerm) {
 
+      //Berbere og Romere tilføjes til verdenen.
       for (int i = 0; i < OH.antalBerberKavaleri(); i++) {
         berberKavaleri.add(new BerberK(
           berberVaerdier[0], 
@@ -59,8 +65,7 @@ class SpilSkaerm implements Skaerm {
         verden.add(RK);
       }
 
-
-
+      //I de her to nestede for-løkker bliver hvert element af romerenhederne og berberenheder forbundet med "joints" som lænker dem sammen. Dette skal holde dem nogenlunde sammen som en enhed.
       for (int i = berberKavaleri.size()-1; i >= 0; i--) {
         BerberK BK1 = berberKavaleri.get(i);
         for (int j = berberKavaleri.size()-1; j>= 0; j--) {
@@ -99,17 +104,20 @@ class SpilSkaerm implements Skaerm {
     }
   }
 
+  //Dette køres inden setupSkaerm for at "resette" skærmen.
   void resetSkaerm() {
     knapTrykket = false;
     setupSkaerm = true;
   }
 
+  //If-statementet inde i funktion køres, når knappen er blevet trykket på.
   void opdater(Spilapplikation SA) {
     if (knapTrykket) {
       SA.setSkaermStart();
     }
   }
 
+  //Sætter boolean-værdien til sand, hvis knappen bliver trykket på.
   void museKlik(int x, int y) {
     knapTrykket = tilStart.musKlikkerPaaKnap(x, y);
   }

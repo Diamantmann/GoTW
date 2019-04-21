@@ -1,3 +1,4 @@
+//Klassen SetBerberHaerSkaerm implementere Skaerm.
 class SetBerberHaerSkaerm implements Skaerm {
 
   // REFERENCER - TIL UDVIKLING AF PROGRAM 
@@ -5,6 +6,7 @@ class SetBerberHaerSkaerm implements Skaerm {
   // int nuvaerendeBerberVaerdi;
   // int[] berberVaerdier = new int[4];
 
+  //Her opsættes knapperne og booleanværdier erklæres og initialiseres.
   SkiftSkaermKnap tilMenuen = new SkiftSkaermKnap(width/2-90, 220, 30, 180, "Gem og tilbage");
   boolean tilbageTilStartSkaerm = false;
 
@@ -31,7 +33,7 @@ class SetBerberHaerSkaerm implements Skaerm {
   boolean setupSkaerm = true;
 
 
-
+  //Dette køres inden setupSkaerm for at "resette" skærmen.
   void resetSkaerm() {
     setupSkaerm = true;
 
@@ -50,30 +52,18 @@ class SetBerberHaerSkaerm implements Skaerm {
     tilbageTilStartSkaerm = false;
   }
 
+  //Køres, hvis setupSkaerm er sand. Virker ligesom 'void setup()'. Der er dog intet, der skal sættes op kun én gang.
   void setupSkaerm() {
-    if (setupSkaerm) {
-      for (int i = berberKavaleri.size()-1; i>=0; i--) {
-        BerberK BK = berberKavaleri.get(i);
-        verden.removeBody(BK);
-        berberKavaleri.remove(i);
-      }
-
-      for (int i = romerKavaleri.size()-1; i>=0; i--) {
-        RomerK RK = romerKavaleri.get(i);
-        verden.removeBody(RK);
-        romerKavaleri.remove(i);
-      }
-
-      setupSkaerm = false;
-    }
   }
 
   void display() {
     clear();
     background(255);
 
+    //Udregner hvor mange point man har tilbage at tildele.
     nuvaerendeBerberVaerdi = berberVaerdier[0] + berberVaerdier[1] + berberVaerdier[2] + berberVaerdier[3];
 
+    //Al tekst og alle knapper vises på skærmen.
     textSize(32);
     text("Vælg en berberhær!", width/2, 40);
     textSize(20);
@@ -90,7 +80,7 @@ class SetBerberHaerSkaerm implements Skaerm {
     text(berberVaerdier[1], width/2 + 70, 120);
     text(berberVaerdier[2], width/2 + 70, 150);
     text(berberVaerdier[3]*10, width/2 + 70, 180);
-    text(20 - nuvaerendeBerberVaerdi, width/2 + 70, 200);
+    text(maksBerberVaerdi - nuvaerendeBerberVaerdi, width/2 + 70, 200);
     textAlign(CENTER);
 
     hastighedOp.visKnap();
@@ -104,18 +94,19 @@ class SetBerberHaerSkaerm implements Skaerm {
 
     HPOp.visKnap();
     HPNed.visKnap();
-    
+
     tilMenuen.visKnap();
   }
 
+  //Mange if-statements der tjekker, hvorvidt en knap er blevet trykket på. Hvis knappen er en navigationsknap, sendes man til en anden skærm. Hvis det ikke er, tildeler eller fratager man point fra enhederne.
+  //Der kan ikke tilegnes flere point end man har til rådighed og der kan ikke tages point fra, hvis værdien er på 1.
   void opdater(Spilapplikation SA) {
-    
-    if (tilbageTilStartSkaerm){
+    if (tilbageTilStartSkaerm) {
       SA.setSkaermStart();
     }
-    
+
     if (hastighedOpTrykket) {
-      if (nuvaerendeBerberVaerdi < 20) {
+      if (nuvaerendeBerberVaerdi < maksBerberVaerdi) {
         berberVaerdier[0]++;
         hastighedOpTrykket = false;
       } else {
@@ -131,7 +122,7 @@ class SetBerberHaerSkaerm implements Skaerm {
     }
 
     if (styrkeOpTrykket) {
-      if (nuvaerendeBerberVaerdi < 20) {
+      if (nuvaerendeBerberVaerdi < maksBerberVaerdi) {
         berberVaerdier[1]++;
         styrkeOpTrykket = false;
       } else {
@@ -147,7 +138,7 @@ class SetBerberHaerSkaerm implements Skaerm {
     }
 
     if (storrelseOpTrykket) {
-      if (nuvaerendeBerberVaerdi < 20) {
+      if (nuvaerendeBerberVaerdi < maksBerberVaerdi) {
         berberVaerdier[2]++;
         storrelseOpTrykket = false;
       } else {
@@ -163,7 +154,7 @@ class SetBerberHaerSkaerm implements Skaerm {
     }
 
     if (HPOpTrykket) {
-      if (nuvaerendeBerberVaerdi < 20 ) {
+      if (nuvaerendeBerberVaerdi < maksBerberVaerdi ) {
         berberVaerdier[3]++;
         HPOpTrykket = false;
       } else {
@@ -179,6 +170,7 @@ class SetBerberHaerSkaerm implements Skaerm {
     }
   }
 
+  //Sætter boolean-værdierne til sande, hvis knapperne bliver trykket på.
   void museKlik(int x, int y) {
     hastighedOpTrykket = hastighedOp.musKlikkerPaaKnap(x, y);
     hastighedNedTrykket = hastighedNed.musKlikkerPaaKnap(x, y);
@@ -191,7 +183,7 @@ class SetBerberHaerSkaerm implements Skaerm {
 
     HPOpTrykket = HPOp.musKlikkerPaaKnap(x, y);
     HPNedTrykket = HPNed.musKlikkerPaaKnap(x, y);
-    
-    tilbageTilStartSkaerm = tilMenuen.musKlikkerPaaKnap(x,y);
+
+    tilbageTilStartSkaerm = tilMenuen.musKlikkerPaaKnap(x, y);
   }
 }

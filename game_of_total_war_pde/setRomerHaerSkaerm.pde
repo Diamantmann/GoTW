@@ -1,3 +1,4 @@
+//Klassen SetRomerHaerSkaerm implementere Skaerm.
 class SetRomerHaerSkaerm implements Skaerm {
 
   // REFERENCER - TIL UDVIKLING AF PROGRAM
@@ -5,7 +6,7 @@ class SetRomerHaerSkaerm implements Skaerm {
   // int nuvaerendeRomerVaerdi;
   // int maksRomerVaerdi = 20;
 
-
+  //Her opsættes knapperne og booleanværdier erklæres og initialiseres.
   SkiftSkaermKnap tilMenuen = new SkiftSkaermKnap(width/2-90, 220, 30, 180, "Gem og tilbage");
   boolean tilbageTilStartSkaerm = false;
 
@@ -49,30 +50,18 @@ class SetRomerHaerSkaerm implements Skaerm {
     tilbageTilStartSkaerm = false;
   }
 
+  //Køres, hvis setupSkaerm er sand. Virker ligesom 'void setup()'. Der er dog intet, der skal sættes op kun én gang.
   void setupSkaerm() {
-    if (setupSkaerm) {
-      for (int i = berberKavaleri.size()-1; i>=0; i--) {
-        BerberK BK = berberKavaleri.get(i);
-        verden.removeBody(BK);
-        berberKavaleri.remove(i);
-      }
-
-      for (int i = romerKavaleri.size()-1; i>=0; i--) {
-        RomerK RK = romerKavaleri.get(i);
-        verden.removeBody(RK);
-        romerKavaleri.remove(i);
-      }
-
-      setupSkaerm = false;
-    }
   }
 
   void display() {
     clear();
     background(255);
 
+    //Udregner hvor mange point man har tilbage at tildele.
     nuvaerendeRomerVaerdi = romerVaerdier[0] + romerVaerdier[1] + romerVaerdier[2] + romerVaerdier[3];
 
+    //Al tekst og alle knapper vises på skærmen.
     textSize(32);
     text("Vælg en romerhær!", width/2, 40);
     textSize(20);
@@ -89,7 +78,7 @@ class SetRomerHaerSkaerm implements Skaerm {
     text(romerVaerdier[1], width/2 + 70, 120);
     text(romerVaerdier[2], width/2 + 70, 150);
     text(romerVaerdier[3]*10, width/2 + 70, 180);
-    text(20 - nuvaerendeRomerVaerdi, width/2 + 70, 200);
+    text(maksRomerVaerdi - nuvaerendeRomerVaerdi, width/2 + 70, 200);
     textAlign(CENTER);
 
     hastighedOp.visKnap();
@@ -103,86 +92,96 @@ class SetRomerHaerSkaerm implements Skaerm {
 
     HPOp.visKnap();
     HPNed.visKnap();
-    
+
     tilMenuen.visKnap();
   }
 
+  //Mange if-statements der tjekker, hvorvidt en knap er blevet trykket på. Hvis knappen er en navigationsknap, sendes man til en anden skærm. Hvis det ikke er, tildeler eller fratager man point fra enhederne.
+  //Der kan ikke tilegnes flere point end man har til rådighed og der kan ikke tages point fra, hvis værdien er på 1.
   void opdater(Spilapplikation SA) {
-    
-    if (tilbageTilStartSkaerm){
+    if (tilbageTilStartSkaerm) {
       SA.setSkaermStart();
     }
-    
-    if(hastighedOpTrykket){
-      if(nuvaerendeRomerVaerdi < 20){
+
+    if (hastighedOpTrykket) {
+      if (nuvaerendeRomerVaerdi < maksRomerVaerdi) {
         romerVaerdier[0]++;
         hastighedOpTrykket = false;
-      } else {}
+      } else {
+      }
     }
-    
-    if(hastighedNedTrykket){
-      if(nuvaerendeRomerVaerdi > 0 && romerVaerdier[0] != 1){
+
+    if (hastighedNedTrykket) {
+      if (nuvaerendeRomerVaerdi > 0 && romerVaerdier[0] != 1) {
         romerVaerdier[0]--;
         hastighedNedTrykket = false;
-      } else {}
+      } else {
+      }
     }
-    
-    if(styrkeOpTrykket){
-      if(nuvaerendeRomerVaerdi < 20){
+
+    if (styrkeOpTrykket) {
+      if (nuvaerendeRomerVaerdi < maksRomerVaerdi) {
         romerVaerdier[1]++;
         styrkeOpTrykket = false;
-      } else {}
+      } else {
+      }
     }
-    
-    if(styrkeNedTrykket){
-      if(nuvaerendeRomerVaerdi > 0 && romerVaerdier[1] != 1){
+
+    if (styrkeNedTrykket) {
+      if (nuvaerendeRomerVaerdi > 0 && romerVaerdier[1] != 1) {
         romerVaerdier[1]--;
         styrkeNedTrykket = false;
-      } else {}
+      } else {
+      }
     }
-    
-    if(storrelseOpTrykket){
-      if(nuvaerendeRomerVaerdi < 20){
+
+    if (storrelseOpTrykket) {
+      if (nuvaerendeRomerVaerdi < maksRomerVaerdi) {
         romerVaerdier[2]++;
         storrelseOpTrykket = false;
-      } else {}
+      } else {
+      }
     }
-    
-    if(storrelseNedTrykket){
-      if(nuvaerendeRomerVaerdi > 0 && romerVaerdier[2] != 1){
+
+    if (storrelseNedTrykket) {
+      if (nuvaerendeRomerVaerdi > 0 && romerVaerdier[2] != 1) {
         romerVaerdier[2]--;
         storrelseNedTrykket = false;
-      } else {}
+      } else {
+      }
     }
-    
-    if(HPOpTrykket){
-      if(nuvaerendeRomerVaerdi < 20 ){
+
+    if (HPOpTrykket) {
+      if (nuvaerendeRomerVaerdi < maksRomerVaerdi) {
         romerVaerdier[3]++;
         HPOpTrykket = false;
-      } else {}
+      } else {
+      }
     }
-    
-    if(HPNedTrykket){
-      if(nuvaerendeRomerVaerdi > 0 && romerVaerdier[3] != 1){
+
+    if (HPNedTrykket) {
+      if (nuvaerendeRomerVaerdi > 0 && romerVaerdier[3] != 1) {
         romerVaerdier[3]--;
         HPNedTrykket = false;
-      } else {}
+      } else {
+      }
     }
   }
 
+  //Sætter boolean-værdierne til sande, hvis knapperne bliver trykket på.
   void museKlik(int x, int y) {
-    hastighedOpTrykket = hastighedOp.musKlikkerPaaKnap(x,y);
-    hastighedNedTrykket = hastighedNed.musKlikkerPaaKnap(x,y);
+    hastighedOpTrykket = hastighedOp.musKlikkerPaaKnap(x, y);
+    hastighedNedTrykket = hastighedNed.musKlikkerPaaKnap(x, y);
 
-    styrkeOpTrykket = styrkeOp.musKlikkerPaaKnap(x,y);
-    styrkeNedTrykket = styrkeNed.musKlikkerPaaKnap(x,y);
+    styrkeOpTrykket = styrkeOp.musKlikkerPaaKnap(x, y);
+    styrkeNedTrykket = styrkeNed.musKlikkerPaaKnap(x, y);
 
-    storrelseOpTrykket = storrelseOp.musKlikkerPaaKnap(x,y);
-    storrelseNedTrykket = storrelseNed.musKlikkerPaaKnap(x,y);
+    storrelseOpTrykket = storrelseOp.musKlikkerPaaKnap(x, y);
+    storrelseNedTrykket = storrelseNed.musKlikkerPaaKnap(x, y);
 
-    HPOpTrykket = HPOp.musKlikkerPaaKnap(x,y);
-    HPNedTrykket = HPNed.musKlikkerPaaKnap(x,y);
-    
-    tilbageTilStartSkaerm = tilMenuen.musKlikkerPaaKnap(x,y);
+    HPOpTrykket = HPOp.musKlikkerPaaKnap(x, y);
+    HPNedTrykket = HPNed.musKlikkerPaaKnap(x, y);
+
+    tilbageTilStartSkaerm = tilMenuen.musKlikkerPaaKnap(x, y);
   }
 }

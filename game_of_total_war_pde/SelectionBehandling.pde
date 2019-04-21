@@ -1,4 +1,7 @@
 class SelectionBehandling {
+
+  //Klassefunktion til at skrive, hvilke berberenheder der er valgt
+  //OBS: Kun kavaleri nåede at blive fuldendt.
   void SelectionBerber() {
     textAlign(RIGHT);
     switch(selectionB) {
@@ -20,9 +23,12 @@ class SelectionBehandling {
     }
     textAlign(CENTER);
   }
-  void selectionRomer(){
+
+  //Klassefunktion til at skrive, hvilke romerenheder der er valgt
+  //OBS: Kun kavaleri nåede at blive fuldendt.
+  void selectionRomer() {
     textAlign(RIGHT);
-    switch(selectionR){
+    switch(selectionR) {
     case 1:
       fill(0);
       text("Romer: Infanteri", width-10, height-25);
